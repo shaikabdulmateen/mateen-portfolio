@@ -9,7 +9,9 @@ import {
   Download,
   Mail,
   MapPin,
+  Menu,
   Sparkles,
+  X,
 } from 'lucide-react'
 import './App.css'
 
@@ -99,6 +101,7 @@ const itemVariants = {
 }
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -165,11 +168,29 @@ function App() {
             Shaik Abdul Mateen<span>.</span>
           </a>
 
-          <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a className="button button-primary nav-cta" href="#contact">
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
+          <div
+            className={`nav-links${isMenuOpen ? ' is-open' : ''}`}
+            id="primary-navigation"
+          >
+            <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+            <a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a>
+            <a
+              className="button button-primary nav-cta"
+              href="#contact"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Hire Me <ArrowUpRight size={16} />
             </a>
           </div>
