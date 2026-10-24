@@ -1,4 +1,4 @@
-
+import mateenPhoto from "./assets/mateen.png";
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import {
@@ -236,12 +236,12 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.25 }}
           >
-            <div className="portrait-frame">
-              <img
-                src="../src/assets/mateen.png"
-                alt="Temporary profile portrait"
-              />
-            </div>
+           <div className="portrait-frame">
+  <img
+    src={mateenPhoto}
+    alt="Shaik Abdul Mateen"
+  />
+</div>
 
             <div className="float-card float-card-one">
               <div className="float-card-icon">
