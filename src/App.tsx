@@ -203,18 +203,21 @@ function App() {
               React, Python and Django.
             </motion.p>
 
-            <motion.div className="hero-actions" variants={itemVariants}>
-              <a className="button button-primary" href="#projects">
-                Explore My Work <ArrowRight size={17} />
-              </a>
-              <a
-                className="button button-secondary"
-                href="../public/Shaik Abdul Mateen"
-                download
-              >
-                Download Resume <Download size={17} />
-              </a>
-            </motion.div>
+           
+<motion.div className="hero-actions" variants={itemVariants}>
+  <a className="button button-primary" href="#projects">
+    Explore My Work <ArrowRight size={17} />
+  </a>
+
+  <a
+    className="button button-secondary"
+    href="/Shaik%20Abdul%20Mateen%201.pdf"
+    download="Shaik-Abdul-Mateen-Resume.pdf"
+  >
+    Download Resume <Download size={17} />
+  </a>
+</motion.div>
+
 
             <motion.div className="social-links" variants={itemVariants}>
               <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noreferrer">
