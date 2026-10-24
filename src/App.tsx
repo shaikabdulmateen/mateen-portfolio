@@ -241,11 +241,11 @@ function App() {
 
 
             <motion.div className="social-links" variants={itemVariants}>
-              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noreferrer">
+              <a href="https://github.com/shaikabdulmateen" target="_blank" rel="noreferrer">
                 GitHub
               </a>
 
-              <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/shaik-abdul-mateen-401725301?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
               <a href="#contact">
