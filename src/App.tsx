@@ -16,10 +16,21 @@ import {
 import './App.css'
 
 const skills = [
-  'HTML5', 'CSS3', 'JavaScript', 'TypeScript',
-  'React.js', 'Bootstrap', 'jQuery', 'Python',
-  'Django', 'PostgreSQL', 'Java', 'Spring Boot',
-  'REST APIs', 'Git & GitHub', 'DSA',
+  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+  { name: 'jQuery', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg' },
+  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
+  { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  { name: 'Spring Boot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+  { name: 'REST APIs', icon: 'https://cdn.simpleicons.org/openapi/6BA539' },
+  { name: 'Git & GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+  { name: 'DSA', icon: 'https://cdn.simpleicons.org/leetcode/FFA116' },
 ]
 
 const projects = [
@@ -241,11 +252,11 @@ function App() {
 
 
             <motion.div className="social-links" variants={itemVariants}>
-              <a href="https://github.com/shaikabdulmateen" target="_blank" rel="noreferrer">
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noreferrer">
                 GitHub
               </a>
 
-              <a href="https://www.linkedin.com/in/shaik-abdul-mateen-401725301?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
               <a href="#contact">
@@ -374,12 +385,14 @@ function App() {
               {skills.map((skill) => (
                 <motion.div
                   className="panel skill-card"
-                  key={skill}
+                  key={skill.name}
                   variants={itemVariants}
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <span><Code2 size={25} /></span>
-                  <strong>{skill}</strong>
+                  <span className="skill-icon">
+                    <img src={skill.icon} alt={`${skill.name} icon`} loading="lazy" />
+                  </span>
+                  <strong>{skill.name}</strong>
                 </motion.div>
               ))}
             </motion.div>
