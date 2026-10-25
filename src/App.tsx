@@ -1,6 +1,7 @@
+
 import mateenPhoto from "./assets/mateen.png";
-import { useState, type ChangeEvent, type FormEvent } from 'react'
-import { motion } from 'framer-motion'
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import { motion } from "framer-motion";
 import {
   ArrowDown,
   ArrowRight,
@@ -11,165 +12,167 @@ import {
   MapPin,
   Menu,
   Sparkles,
+  Webhook,
   X,
-} from 'lucide-react'
-import './App.css'
+} from "lucide-react";
+import "./App.css";
 
 const skills = [
-  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-  { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-  { name: 'jQuery', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg' },
-  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
-  { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-  { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-  { name: 'Spring Boot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
-  { name: 'REST APIs', icon: 'https://cdn.simpleicons.org/openapi/6BA539' },
-  { name: 'Git & GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
-  { name: 'DSA', icon: 'https://cdn.simpleicons.org/leetcode/FFA116' },
-]
+  { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+  { name: "React.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+  { name: "jQuery", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" },
+  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "Django", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+  { name: "Spring Boot", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+  { name: "REST APIs", icon: "webhook" },
+  { name: "Git & GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+  { name: "DSA", icon: "https://cdn.simpleicons.org/leetcode/FFA116" },
+];
 
 const projects = [
   {
-    number: '01',
-    name: 'SmartCart',
-    category: 'E-COMMERCE PLATFORM',
+    number: "01",
+    name: "SmartCart",
+    category: "E-COMMERCE PLATFORM",
     description:
-      'An e-commerce web application with a React frontend and Django backend, backed by PostgreSQL. Includes product browsing, authentication, cart management and order processing.',
-    tags: ['React', 'Django', 'PostgreSQL'],
-    icon: '🛍️',
-    color: 'purple',
+      "An e-commerce web application with a React frontend and Django backend, backed by PostgreSQL. Includes product browsing, authentication, cart management and order processing.",
+    tags: ["React", "Django", "PostgreSQL"],
+    icon: "🛍️",
+    color: "purple",
     liveUrl: "https://smartcart-9o6qdulj0-mateen8.vercel.app/",
     githubUrl: "https://github.com/shaikabdulmateen/smartcart",
   },
   {
-    number: '02',
-    name: 'Chatter',
-    category: 'SOCIAL MEDIA APPLICATION',
+    number: "02",
+    name: "Chatter",
+    category: "SOCIAL MEDIA APPLICATION",
     description:
-      'A Twitter-inspired application where users can explore a social-style interface and create tweets, powered by React and Django.',
-    tags: ['React', 'Django', 'Python'],
-    icon: '💬',
-    color: 'blue',
+      "A Twitter-inspired application where users can explore a social-style interface and create tweets, powered by React and Django.",
+    tags: ["React", "Django", "Python"],
+    icon: "💬",
+    color: "blue",
     liveUrl: "https://chatter-j1tw.onrender.com/",
     githubUrl: "https://github.com/shaikabdulmateen/Chatter",
   },
   {
-    number: '03',
-    name: 'Note Minde AI',
-    category: 'AI-POWERED NOTES',
+    number: "03",
+    name: "Note Minde AI",
+    category: "AI-POWERED NOTES",
     description:
-      'A notes application built with React, featuring an AI mode and browser local storage to keep notes available between visits.',
-    tags: ['React', 'JavaScript', 'Local Storage'],
-    icon: '🧠',
-    color: 'pink',
+      "A notes application built with React, featuring an AI mode and browser local storage to keep notes available between visits.",
+    tags: ["React", "JavaScript", "Local Storage"],
+    icon: "🧠",
+    color: "pink",
     liveUrl: "https://notemind-ai-sigma.vercel.app",
     githubUrl: "https://github.com/shaikabdulmateen/notemind-ai",
   },
-]
+];
 
 const education = [
   {
-    course: 'Master of Computer Applications (MCA)',
-    institution: 'Omega Institute of Science and Technology',
-    date: 'Currently pursuing · 3rd Semester',
+    course: "Master of Computer Applications (MCA)",
+    institution: "Omega Institute of Science and Technology",
+    date: "Currently pursuing · 3rd Semester",
   },
   {
-    course: 'Bachelor of Computer Applications (BCA)',
-    institution: 'Ark Degree and PG College · Osmania University',
-    date: '2022 – 2025',
+    course: "Bachelor of Computer Applications (BCA)",
+    institution: "Ark Degree and PG College · Osmania University",
+    date: "2022 – 2025",
   },
   {
-    course: 'Intermediate',
-    institution: 'Sri Sai Co-op Junior College',
-    date: '2019 – 2021',
+    course: "Intermediate",
+    institution: "Sri Sai Co-op Junior College",
+    date: "2019 – 2021",
   },
   {
-    course: 'SSC',
-    institution: 'Millat-e-Islamia High School, Utkoor',
-    date: '2018 – 2019',
+    course: "SSC",
+    institution: "Millat-e-Islamia High School, Utkoor",
+    date: "2018 – 2019",
   },
-]
+];
 
 const containerVariants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.12 },
   },
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
+    transition: { duration: 0.6, ease: "easeOut" as const },
   },
-}
+};
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
-  const [isSending, setIsSending] = useState(false)
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [isSending, setIsSending] = useState(false);
   const [formStatus, setFormStatus] = useState<{
-    type: 'success' | 'error'
-    message: string
-  } | null>(null)
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const handleFormChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = event.target
-    setFormData((current) => ({ ...current, [name]: value }))
-  }
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
 
   const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setIsSending(true)
-    setFormStatus(null)
+    event.preventDefault();
+    setIsSending(true);
+    setFormStatus(null);
 
     try {
-      // Replace YOUR_FORM_ID with the form ID provided by Formspree.
-      const response = await fetch('https://formspree.io/f/xgaojkdq', {
-        method: 'POST',
+      const response = await fetch("https://formspree.io/f/xgaojkdq", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
           ...formData,
           _replyto: formData.email,
           _subject: `Portfolio message: ${formData.subject}`,
         }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error('The message could not be sent.')
+        throw new Error("The message could not be sent.");
       }
 
       setFormStatus({
-        type: 'success',
-        message: 'Thanks! Your message has been sent. I’ll get back to you soon.',
-      })
-      setFormData({ name: '', email: '', subject: '', message: '' })
+        type: "success",
+        message:
+          "Thanks! Your message has been sent. I’ll get back to you soon.",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch {
       setFormStatus({
-        type: 'error',
-        message: 'Message not sent yet. Please check the form setup or email me directly using the address below.',
-      })
+        type: "error",
+        message:
+          "Message not sent yet. Please check the form setup or email me directly using the address below.",
+      });
     } finally {
-      setIsSending(false)
+      setIsSending(false);
     }
-  }
+  };
 
   return (
     <div className="portfolio">
@@ -182,7 +185,9 @@ function App() {
           <button
             className="menu-toggle"
             type="button"
-            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={
+              isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={isMenuOpen}
             aria-controls="primary-navigation"
             onClick={() => setIsMenuOpen((open) => !open)}
@@ -191,12 +196,18 @@ function App() {
           </button>
 
           <div
-            className={`nav-links${isMenuOpen ? ' is-open' : ''}`}
+            className={`nav-links${isMenuOpen ? " is-open" : ""}`}
             id="primary-navigation"
           >
-            <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
-            <a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a>
-            <a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)}>
+              About
+            </a>
+            <a href="#skills" onClick={() => setIsMenuOpen(false)}>
+              Skills
+            </a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)}>
+              Projects
+            </a>
             <a
               className="button button-primary nav-cta"
               href="#contact"
@@ -231,34 +242,41 @@ function App() {
 
             <motion.p className="hero-description" variants={itemVariants}>
               Hey, I’m Mateen — a passionate developer who enjoys turning
-              ideas into responsive, user-friendly web applications with
-              React, Python and Django.
+              ideas into responsive, user-friendly web applications with React,
+              Python and Django.
             </motion.p>
 
-           
-<motion.div className="hero-actions" variants={itemVariants}>
-  <a className="button button-primary" href="#projects">
-    Explore My Work <ArrowRight size={17} />
-  </a>
+            <motion.div className="hero-actions" variants={itemVariants}>
+              <a className="button button-primary" href="#projects">
+                Explore My Work <ArrowRight size={17} />
+              </a>
 
-  <a
-    className="button button-secondary"
-    href="/Shaik%20Abdul%20Mateen%201.pdf"
-    download="Shaik-Abdul-Mateen-Resume.pdf"
-  >
-    Download Resume <Download size={17} />
-  </a>
-</motion.div>
-
+              <a
+                className="button button-secondary"
+                href="/Shaik%20Abdul%20Mateen%201.pdf"
+                download="Shaik-Abdul-Mateen-Resume.pdf"
+              >
+                Download Resume <Download size={17} />
+              </a>
+            </motion.div>
 
             <motion.div className="social-links" variants={itemVariants}>
-              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noreferrer">
+              <a
+                href="https://github.com/shaikabdulmateen"
+                target="_blank"
+                rel="noreferrer"
+              >
                 GitHub
               </a>
 
-              <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noreferrer">
+              <a
+                href="https://www.linkedin.com/in/shaik-abdul-mateen-401725301/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 LinkedIn
               </a>
+
               <a href="#contact">
                 <Mail size={18} /> Contact
               </a>
@@ -271,12 +289,9 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.25 }}
           >
-           <div className="portrait-frame">
-  <img
-    src={mateenPhoto}
-    alt="Shaik Abdul Mateen"
-  />
-</div>
+            <div className="portrait-frame">
+              <img src={mateenPhoto} alt="Shaik Abdul Mateen" />
+            </div>
 
             <div className="float-card float-card-one">
               <div className="float-card-icon">
@@ -310,7 +325,10 @@ function App() {
               transition={{ duration: 0.6 }}
             >
               <span className="section-label">A little about me</span>
-              <h2>Code with purpose. <span className="gradient-text">Grow with passion.</span></h2>
+              <h2>
+                Code with purpose.{" "}
+                <span className="gradient-text">Grow with passion.</span>
+              </h2>
               <p>
                 I’m currently pursuing my MCA and have completed a Full Stack
                 Python development course at Ace Academy. I enjoy developing
@@ -320,10 +338,7 @@ function App() {
             </motion.div>
 
             <div className="cards-grid">
-              <motion.div
-                className="panel project-card"
-                whileHover={{ y: -6 }}
-              >
+              <motion.div className="panel project-card" whileHover={{ y: -6 }}>
                 <span className="project-number">01 / BUILD</span>
                 <h3>Practical Projects</h3>
                 <p>
@@ -332,10 +347,7 @@ function App() {
                 </p>
               </motion.div>
 
-              <motion.div
-                className="panel project-card"
-                whileHover={{ y: -6 }}
-              >
+              <motion.div className="panel project-card" whileHover={{ y: -6 }}>
                 <span className="project-number">02 / LEARN</span>
                 <h3>Keep Improving</h3>
                 <p>
@@ -344,10 +356,7 @@ function App() {
                 </p>
               </motion.div>
 
-              <motion.div
-                className="panel project-card"
-                whileHover={{ y: -6 }}
-              >
+              <motion.div className="panel project-card" whileHover={{ y: -6 }}>
                 <span className="project-number">03 / CREATE</span>
                 <h3>User-Focused Design</h3>
                 <p>
@@ -368,7 +377,10 @@ function App() {
               viewport={{ once: true }}
             >
               <span className="section-label">My toolkit</span>
-              <h2>Technologies I <span className="gradient-text">work with.</span></h2>
+              <h2>
+                Technologies I{" "}
+                <span className="gradient-text">work with.</span>
+              </h2>
               <p>
                 Technologies I’ve studied and used in my learning and
                 development projects.
@@ -390,7 +402,15 @@ function App() {
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
                   <span className="skill-icon">
-                    <img src={skill.icon} alt={`${skill.name} icon`} loading="lazy" />
+                    {skill.icon === "webhook" ? (
+                      <Webhook size={30} aria-label="REST APIs icon" />
+                    ) : (
+                      <img
+                        src={skill.icon}
+                        alt={`${skill.name} icon`}
+                        loading="lazy"
+                      />
+                    )}
                   </span>
                   <strong>{skill.name}</strong>
                 </motion.div>
@@ -408,66 +428,67 @@ function App() {
               viewport={{ once: true }}
             >
               <span className="section-label">Selected work</span>
-              <h2>Projects built with <span className="gradient-text">curiosity.</span></h2>
-              <p>
-                A few applications from my full stack development journey.
-              </p>
+              <h2>
+                Projects built with{" "}
+                <span className="gradient-text">curiosity.</span>
+              </h2>
+              <p>A few applications from my full stack development journey.</p>
             </motion.div>
 
-            
-<div className="cards-grid">
-  {projects.map((project, index) => (
-    <motion.article
-      className={`panel project-card project-${project.color}`}
-      key={project.number}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.55, delay: index * 0.12 }}
-      whileHover={{ y: -7 }}
-    >
-      <span className="project-number">
-        {project.number} / PROJECT
-      </span>
+            <div className="cards-grid">
+              {projects.map((project, index) => (
+                <motion.article
+                  className={`panel project-card project-${project.color}`}
+                  key={project.number}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.55, delay: index * 0.12 }}
+                  whileHover={{ y: -7 }}
+                >
+                  <span className="project-number">
+                    {project.number} / PROJECT
+                  </span>
 
-      <div className="project-art" aria-hidden="true">
-        <span>{project.icon}</span>
-        <span className="project-art-code">&lt; / &gt;</span>
-      </div>
+                  <div className="project-art" aria-hidden="true">
+                    <span>{project.icon}</span>
+                    <span className="project-art-code">&lt; / &gt;</span>
+                  </div>
 
-      <span className="project-category">{project.category}</span>
-      <h3>{project.name}</h3>
-      <p>{project.description}</p>
+                  <span className="project-category">{project.category}</span>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
 
-      <div className="tags">
-        {project.tags.map((tag) => (
-          <span className="tag" key={tag}>{tag}</span>
-        ))}
-      </div>
+                  <div className="tags">
+                    {project.tags.map((tag) => (
+                      <span className="tag" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-      <div className="project-links">
-        <a
-          className="project-link"
-          href={project.liveUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Live Demo <ArrowUpRight size={17} />
-        </a>
+                  <div className="project-links">
+                    <a
+                      className="project-link"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Live Demo <ArrowUpRight size={17} />
+                    </a>
 
-        <a
-          className="project-link"
-          href={project.githubUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          View on GitHub <ArrowUpRight size={17} />
-        </a>
-      </div>
-    </motion.article>
-  ))}
-</div>
-
+                    <a
+                      className="project-link"
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View on GitHub <ArrowUpRight size={17} />
+                    </a>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -480,8 +501,12 @@ function App() {
               viewport={{ once: true }}
             >
               <span className="section-label">My journey</span>
-              <h2>Education & <span className="gradient-text">learning.</span></h2>
-              <p>The academic journey that brought me into software development.</p>
+              <h2>
+                Education & <span className="gradient-text">learning.</span>
+              </h2>
+              <p>
+                The academic journey that brought me into software development.
+              </p>
             </motion.div>
 
             <div className="timeline">
@@ -513,10 +538,13 @@ function App() {
               transition={{ duration: 0.6 }}
             >
               <span className="section-label">Have an opportunity?</span>
-              <h2>Let’s build something <span className="gradient-text">great.</span></h2>
+              <h2>
+                Let’s build something{" "}
+                <span className="gradient-text">great.</span>
+              </h2>
               <p>
-                Interested in working together? Send me a message using the form
-                below. I’ll get back to you as soon as I can.
+                Interested in working together? Send me a message using the
+                form below. I’ll get back to you as soon as I can.
               </p>
 
               <form className="contact-form" onSubmit={handleContactSubmit}>
@@ -533,6 +561,7 @@ function App() {
                       required
                     />
                   </label>
+
                   <label className="contact-field">
                     <span>Your email</span>
                     <input
@@ -571,14 +600,22 @@ function App() {
                   />
                 </label>
 
-                <button className="button button-primary contact-submit" type="submit" disabled={isSending}>
+                <button
+                  className="button button-primary contact-submit"
+                  type="submit"
+                  disabled={isSending}
+                >
                   <Mail size={18} />
-                  {isSending ? 'Sending message...' : 'Send Message'}
+                  {isSending ? "Sending message..." : "Send Message"}
                   <ArrowUpRight size={17} />
                 </button>
 
                 {formStatus && (
-                  <p className={`contact-status ${formStatus.type}`} role="status" aria-live="polite">
+                  <p
+                    className={`contact-status ${formStatus.type}`}
+                    role="status"
+                    aria-live="polite"
+                  >
                     {formStatus.message}
                   </p>
                 )}
@@ -590,6 +627,7 @@ function App() {
               >
                 <Mail size={16} /> shaikabdulmateenmateen@gmail.com
               </a>
+
               <p className="contact-location">
                 <MapPin size={16} /> Hyderabad, India
               </p>
@@ -600,14 +638,17 @@ function App() {
 
       <footer className="footer">
         <div className="container">
-          <p>Designed & built with care by Shaik Abdul Mateen · © {new Date().getFullYear()}</p>
+          <p>
+            Designed & built with care by Shaik Abdul Mateen · ©{" "}
+            {new Date().getFullYear()}
+          </p>
           <a href="#home" className="back-to-top">
             Back to top <ArrowDown size={15} />
           </a>
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
